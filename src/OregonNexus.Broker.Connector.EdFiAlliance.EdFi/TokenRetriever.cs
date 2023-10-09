@@ -33,7 +33,6 @@ public class TokenRetriever
         return GetBearerToken(oauthClient);
     }
 
-
     private string GetBearerToken(ApiClient oauthClient)
     {
         var bearerTokenRequest = new RestRequest("oauth/token", Method.POST);
@@ -62,14 +61,14 @@ public class TokenRetriever
 internal class BearerTokenResponse
 {
     [DataMember(Name = "access_token", EmitDefaultValue = false)]
-    public string AccessToken { get; set; }
+    public string? AccessToken { get; set; }
 
     [DataMember(Name = "expires_in", EmitDefaultValue = false)]
-    public string ExpiresIn { get; set; }
+    public string? ExpiresIn { get; set; }
 
     [DataMember(Name = "token_type", EmitDefaultValue = false)]
-    public string TokenType { get; set; }
+    public string? TokenType { get; set; }
 
     [DataMember(Name = "error", EmitDefaultValue = false)]
-    public string Error { get; set; }
+    public string? Error { get; set; }
 }
