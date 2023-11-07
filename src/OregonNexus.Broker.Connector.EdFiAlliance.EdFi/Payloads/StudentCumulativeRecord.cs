@@ -5,7 +5,7 @@ using OregonNexus.Broker.Connector.Payload;
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Payloads;
 
 [DisplayName("Student Cumulative Record")]
-public class StudentCumulativeRecord : IPayload
+public class StudentCumulativeRecord
 {
     [DisplayName("Students")]
     [Description("Indicates whether to use the Students resource.")]

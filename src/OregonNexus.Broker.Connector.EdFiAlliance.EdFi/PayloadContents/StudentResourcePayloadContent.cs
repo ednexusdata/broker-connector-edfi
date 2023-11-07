@@ -1,4 +1,6 @@
 using System;
+using System.Text.Json;
+using EdFi.OdsApi.Sdk.Api.Descriptors;
 using EdFi.OdsApi.Sdk.Api.Resources;
 using Microsoft.Extensions.Logging;
 using OregonNexus.Broker.Connector.PayloadContents;
@@ -12,5 +14,22 @@ public class StudentResourcePayloadContent : DataContentType
     public override string SchemaVersion => "3";
     public override string ContentType => "text/json";
 
-    public override string Content { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    public override string? Content { get; set; }
+
+    public static async Task<StudentResourcePayloadContent> ExecuteAsync()
+    {
+        var api = new StudentsApi("NEED CONFIGURATION");
+        var response = await api.GetStudentsAsyncWithHttpInfo(studentUniqueId: "TEST");
+        var httpReponseCode = response.StatusCode;
+        var students = response.Data;
+
+        // _logger.LogInformation($"{httpReponseCode.ToString()} {students.ToString()}");
+
+        var dataContent = new StudentResourcePayloadContent()
+        {
+            Content = JsonSerializer.Serialize(students)
+        };
+        return dataContent;
+        //return new Task<StudentResourcePayloadContent>(() => new StudentResourcePayloadContent());
+    }
 }
