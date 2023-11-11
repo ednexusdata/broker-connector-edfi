@@ -1,25 +1,26 @@
-using EdFi.OdsApi.Sdk.Api.Resources;
 using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 using OregonNexus.Broker.Connector.PayloadContents;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContentCommands;
-
 public class StudentResourceCommand : PayloadContent<StudentResourcePayloadContent>
 {
+    private readonly string _basePath;
+    private readonly string _studentUniqueId;
+    public StudentResourceCommand(
+        string basePath,
+        string studentUniqueId)
+    {
+        _basePath = basePath;
+        _studentUniqueId = studentUniqueId;
+    }
     public async override Task<StudentResourcePayloadContent> ExecuteAsync()
     {
-        var api = new StudentsApi("NEED CONFIGURATION");
-        var response = await api.GetStudentsAsyncWithHttpInfo(studentUniqueId: "TEST");
-        // var httpReponseCode = response.StatusCode;
-        // var students = response.Data;
-
-        // _logger.LogInformation($"{httpReponseCode.ToString()} {students.ToString()}");
-
-        // var dataContent = new StudentResourcePayloadContent()
-        // {
-        //     Content = JsonSerializer.Serialize(students)
-        // };
-        return new StudentResourcePayloadContent();
-        //return new Task<StudentResourcePayloadContent>(() => new StudentResourcePayloadContent());
+        var payloadContent = new StudentResourcePayloadContent()
+        {
+            BasePath = _basePath,
+            StudentUniqueId = _studentUniqueId
+        };
+        await payloadContent.ExecuteAsync();
+        return payloadContent;
     }
 }

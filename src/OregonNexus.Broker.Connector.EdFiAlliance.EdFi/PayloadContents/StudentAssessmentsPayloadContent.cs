@@ -3,7 +3,7 @@ using EdFi.OdsApi.Sdk.Api.Resources;
 using OregonNexus.Broker.Connector.PayloadContentTypes;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
-public class StudentResourcePayloadContent : DataContentType
+public class StudentAssessmentsPayloadContent : DataContentType
 {
     public override string Schema => "EdFi";
     public override string SchemaVersion => "3";
@@ -11,15 +11,15 @@ public class StudentResourcePayloadContent : DataContentType
     public override string? Content { get; set; }
     public string BasePath {get;set;}
     public string StudentUniqueId {get;set;}
-    public async Task<StudentResourcePayloadContent> ExecuteAsync()
+    private async Task<StudentAssessmentsPayloadContent> ExecuteAsync()
     {
-        var api = new StudentsApi(BasePath);
-        var response = await api.GetStudentsAsyncWithHttpInfo(studentUniqueId: StudentUniqueId);
-        var students = response.Data;
+        var api = new StudentAssessmentsApi(BasePath);
+        var response = await api.GetStudentAssessmentsAsyncWithHttpInfo(studentUniqueId: StudentUniqueId);
+        var assessments = response.Data;
 
-        var dataContent = new StudentResourcePayloadContent()
+        var dataContent = new StudentAssessmentsPayloadContent()
         {
-            Content = JsonSerializer.Serialize(students)
+            Content = JsonSerializer.Serialize(assessments)
         };
         return dataContent;
     }
