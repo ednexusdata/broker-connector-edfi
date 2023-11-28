@@ -1,5 +1,7 @@
 using System.Text.Json;
-using EdFi.OdsApi.Sdk.Api.Resources;
+using EdFi.OdsApi.Sdk.Apis.All;
+using Microsoft.Extensions.Logging;
+using OregonNexus.Broker.Connector.PayloadContents;
 using OregonNexus.Broker.Connector.PayloadContentTypes;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
@@ -14,7 +16,8 @@ public class StudentResourcePayloadContent : DataContentType
     public async Task<StudentResourcePayloadContent> ExecuteAsync()
     {
         var api = new StudentsApi(BasePath);
-        var response = await api.GetStudentsAsyncWithHttpInfo(studentUniqueId: StudentUniqueId);
+        var response = await api.GetStudentsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
+        var httpReponseCode = response.StatusCode;
         var students = response.Data;
 
         var dataContent = new StudentResourcePayloadContent()
