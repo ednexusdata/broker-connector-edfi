@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Text.Json;
 using EdFi.OdsApi.Sdk.Apis.All;
 using Microsoft.Extensions.Logging;
@@ -5,6 +6,8 @@ using OregonNexus.Broker.Connector.PayloadContents;
 using OregonNexus.Broker.Connector.PayloadContentTypes;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+
+[DisplayName("Student")]
 public class StudentResourcePayloadContent : DataContentType
 {
     public override string Schema => "EdFi";

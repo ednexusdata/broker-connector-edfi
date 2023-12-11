@@ -1,8 +1,11 @@
+using System.ComponentModel;
 using System.Text.Json;
-using EdFi.OdsApi.Sdk.Api.Resources;
+using EdFi.OdsApi.Sdk.Apis.All;
 using OregonNexus.Broker.Connector.PayloadContentTypes;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+
+[DisplayName("Sections")]
 public class StudentSectionAssociationsPayloadContent : DataContentType
 {
     public override string Schema => "EdFi";
@@ -14,7 +17,7 @@ public class StudentSectionAssociationsPayloadContent : DataContentType
     private async Task<StudentSectionAssociationsPayloadContent> ExecuteAsync()
     {
         var api = new StudentSectionAssociationsApi(BasePath);
-        var response = await api.GetStudentSectionAssociationsAsyncWithHttpInfo(studentUniqueId: StudentUniqueId);
+        var response = await api.GetStudentSectionAssociationsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
         var studentSectionAssociations = response.Data;
 
         var dataContent = new StudentSectionAssociationsPayloadContent()
