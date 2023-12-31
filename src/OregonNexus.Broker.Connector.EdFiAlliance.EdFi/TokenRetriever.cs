@@ -19,13 +19,13 @@ public class TokenRetriever
         this.clientSecret = clientSecret;
     }
 
-    public string ObtainNewBearerToken()
+    public async Task<string> ObtainNewBearerToken()
     {
         var oauthClient = new ApiClient(oauthUrl);
-        return GetBearerToken(oauthClient);
+        return await GetBearerToken(oauthClient);
     }
 
-    private string GetBearerToken(ApiClient oauthClient)
+    private async Task<string> GetBearerToken(ApiClient oauthClient)
     {
         var configuration = new Config() { BasePath = oauthUrl };
         var bearerTokenRequestOptions = new RequestOptions() { Operation = String.Empty };
@@ -33,7 +33,7 @@ public class TokenRetriever
         bearerTokenRequestOptions.FormParameters.Add("Client_secret", clientSecret);
         bearerTokenRequestOptions.FormParameters.Add("Grant_type", "client_credentials");
 
-        var bearerTokenResponse = oauthClient.Post<BearerTokenResponse>("oauth/token", bearerTokenRequestOptions, configuration);
+        var bearerTokenResponse = await oauthClient.PostAsync<BearerTokenResponse>("oauth/token", bearerTokenRequestOptions, configuration);
         if (bearerTokenResponse.StatusCode != HttpStatusCode.OK)
         {
             throw new AuthenticationException("Unable to retrieve an access token. Error message: " +
