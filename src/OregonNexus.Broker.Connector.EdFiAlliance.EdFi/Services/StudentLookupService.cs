@@ -7,6 +7,8 @@ using EdFi.OdsApi.Sdk.Apis.All;
 using EdFiOdsSdk = EdFi.OdsApi.Sdk.Client;
 using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Configuration;
 using OregonNexus.Broker.Connector.Resolvers;
+using OregonNexus.Broker.Connector.Student;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Services;
 
@@ -19,7 +21,7 @@ public class StudentLookupService : IStudentLookupService
         _configurationResolver = configurationResolver;
    }
 
-   public async Task<List<StudentLookupResult>> SearchAsync(OregonNexus.Broker.Domain.Student studentParameters)
+   public async Task<List<StudentLookupResult>> SearchAsync(Domain.Student studentParameters)
    {
         var connection = await _configurationResolver.FetchConnectorSettingsAsync<Connection>();
         
@@ -54,7 +56,12 @@ public class StudentLookupService : IStudentLookupService
                     LastName = edfiResult.LastSurname,
                     StudentId = edfiResult.StudentUniqueId,
                     Gender = edfiResult.BirthSexDescriptor,
-                    BirthDate = DateOnly.FromDateTime(edfiResult.BirthDate)
+                    BirthDate = DateOnly.FromDateTime(edfiResult.BirthDate),
+                    Additional = new Dictionary<string, object> {
+                        [typeof(Student).FullName!] = new Student() {
+                            StudentUniqueId = edfiResult.StudentUniqueId
+                        }
+                    }
                 });
             }
         }
