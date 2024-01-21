@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Runtime.Serialization;
 using System.Security.Authentication;
 using EdFi.OdsApi.Sdk.Client;
-using RestSharp.Portable;
+using Config = EdFi.OdsApi.Sdk.Client.Configuration;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi;
+
 public class TokenRetriever
 {
     private string oauthUrl;
     private string clientKey;
     private string clientSecret;
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="oauthUrl"></param>
-    /// <param name="clientKey"></param>
-    /// <param name="clientSecret"></param>
     public TokenRetriever(string oauthUrl, string clientKey, string clientSecret)
     {
         this.oauthUrl = oauthUrl;
@@ -27,20 +19,21 @@ public class TokenRetriever
         this.clientSecret = clientSecret;
     }
 
-    public string ObtainNewBearerToken()
+    public async Task<string> ObtainNewBearerToken()
     {
         var oauthClient = new ApiClient(oauthUrl);
-        return GetBearerToken(oauthClient);
+        return await GetBearerToken(oauthClient);
     }
 
-    private string GetBearerToken(ApiClient oauthClient)
+    private async Task<string> GetBearerToken(ApiClient oauthClient)
     {
-        var bearerTokenRequest = new RestRequest("oauth/token", Method.POST);
-        bearerTokenRequest.AddParameter("Client_id", clientKey);
-        bearerTokenRequest.AddParameter("Client_secret", clientSecret);
-        bearerTokenRequest.AddParameter("Grant_type", "client_credentials");
+        var configuration = new Config() { BasePath = oauthUrl };
+        var bearerTokenRequestOptions = new RequestOptions() { Operation = String.Empty };
+        bearerTokenRequestOptions.FormParameters.Add("Client_id", clientKey);
+        bearerTokenRequestOptions.FormParameters.Add("Client_secret", clientSecret);
+        bearerTokenRequestOptions.FormParameters.Add("Grant_type", "client_credentials");
 
-        var bearerTokenResponse = oauthClient.RestClient.Execute<BearerTokenResponse>(bearerTokenRequest).Result;
+        var bearerTokenResponse = await oauthClient.PostAsync<BearerTokenResponse>("oauth/token", bearerTokenRequestOptions, configuration);
         if (bearerTokenResponse.StatusCode != HttpStatusCode.OK)
         {
             throw new AuthenticationException("Unable to retrieve an access token. Error message: " +
