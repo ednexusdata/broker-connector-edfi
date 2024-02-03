@@ -37,12 +37,9 @@ public class StudentLookupService : IStudentLookupService
 
         // New up StudentsApi
         var edfiStudentsApi = new StudentsApi(configuration);
-        var edfiResults = await edfiStudentsApi.GetStudentsAsync(
-                                        //studentUniqueId: studentParameters.StudentNumber,
-                                        firstName: "James"
-                                        //lastSurname: studentParameters.LastName,
-                                        //middleName: studentParameters.MiddleName
-                            );
+        var edfiResults = await edfiStudentsApi.GetStudentsAsync(firstName: studentParameters.FirstName);
+        edfiResults.AddRange(await edfiStudentsApi.GetStudentsAsync(lastSurname: studentParameters.LastName));
+        edfiResults.AddRange(await edfiStudentsApi.GetStudentsAsync(studentUniqueId: studentParameters.StudentNumber));
 
         var results = new List<StudentLookupResult>();
 
@@ -58,9 +55,7 @@ public class StudentLookupService : IStudentLookupService
                     Gender = edfiResult.BirthSexDescriptor,
                     BirthDate = DateOnly.FromDateTime(edfiResult.BirthDate),
                     Additional = new Dictionary<string, object> {
-                        [typeof(Student).FullName!] = new Student() {
-                            StudentUniqueId = edfiResult.StudentUniqueId
-                        }
+                        [typeof(Student).FullName!] = edfiResult
                     }
                 });
             }
