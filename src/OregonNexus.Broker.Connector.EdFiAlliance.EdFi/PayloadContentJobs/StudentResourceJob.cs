@@ -2,14 +2,14 @@ using EdFi.OdsApi.Sdk.Apis.All;
 using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 using OregonNexus.Broker.Connector.PayloadContents;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContentCommands;
+namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
-public class StudentResourceCommand : PayloadContent<StudentResourcePayloadContent>
+public class StudentResourceJob : IPayloadContentJob
 {
     private readonly string _basePath;
     private readonly string _studentUniqueId;
     
-    public StudentResourceCommand(
+    public StudentResourceJob(
         string basePath,
         string studentUniqueId)
     {
@@ -17,7 +17,7 @@ public class StudentResourceCommand : PayloadContent<StudentResourcePayloadConte
         _studentUniqueId = studentUniqueId;
     }
     
-    public async override Task<StudentResourcePayloadContent> ExecuteAsync()
+    public async Task<StudentResourcePayloadContent> ExecuteAsync(string studentUniqueId)
     {
         var payloadContent = new StudentResourcePayloadContent()
         {
@@ -28,4 +28,5 @@ public class StudentResourceCommand : PayloadContent<StudentResourcePayloadConte
         await payloadContent.ExecuteAsync();
         return payloadContent;
     }
+
 }
