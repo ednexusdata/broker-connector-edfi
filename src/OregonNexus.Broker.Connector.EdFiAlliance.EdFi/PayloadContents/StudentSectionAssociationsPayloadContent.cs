@@ -11,19 +11,23 @@ public class StudentSectionAssociationsPayloadContent : DataContentType
     public override string Schema => "EdFi";
     public override string SchemaVersion => "3";
     public override string ContentType => "text/json";
-    public override string? Content { get; set; }
+    public override string Content { 
+        get {
+            return JsonSerializer.Serialize(JsonContent);
+        }
+    }
     public string BasePath {get;set;}
     public string StudentUniqueId {get;set;}
-    private async Task<StudentSectionAssociationsPayloadContent> ExecuteAsync()
-    {
-        var api = new StudentSectionAssociationsApi(BasePath);
-        var response = await api.GetStudentSectionAssociationsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
-        var studentSectionAssociations = response.Data;
+    // private async Task<StudentSectionAssociationsPayloadContent> ExecuteAsync()
+    // {
+    //     var api = new StudentSectionAssociationsApi(BasePath);
+    //     var response = await api.GetStudentSectionAssociationsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
+    //     var studentSectionAssociations = response.Data;
 
-        var dataContent = new StudentSectionAssociationsPayloadContent()
-        {
-            Content = JsonSerializer.Serialize(studentSectionAssociations)
-        };
-        return dataContent;
-    }
+    //     var dataContent = new StudentSectionAssociationsPayloadContent()
+    //     {
+    //         Content = JsonSerializer.Serialize(studentSectionAssociations)
+    //     };
+    //     return dataContent;
+    // }
 }

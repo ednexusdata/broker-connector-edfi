@@ -4,29 +4,29 @@ using OregonNexus.Broker.Connector.PayloadContents;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
-public class StudentResourceJob : IPayloadContentJob
-{
-    private readonly string _basePath;
-    private readonly string _studentUniqueId;
+// public class StudentResourceJob : IPayloadContentJob
+// {
+//     private readonly string _basePath;
+//     private readonly string _studentUniqueId;
     
-    public StudentResourceJob(
-        string basePath,
-        string studentUniqueId)
-    {
-        _basePath = basePath;
-        _studentUniqueId = studentUniqueId;
-    }
+//     public StudentResourceJob(
+//         string basePath,
+//         string studentUniqueId)
+//     {
+//         _basePath = basePath;
+//         _studentUniqueId = studentUniqueId;
+//     }
     
-    public async Task<StudentResourcePayloadContent> ExecuteAsync(string studentUniqueId)
-    {
-        var payloadContent = new StudentResourcePayloadContent()
-        {
-            BasePath = _basePath,
-            StudentUniqueId = _studentUniqueId
-        };
+//     public async Task<StudentResourcePayloadContent> ExecuteAsync(string studentUniqueId)
+//     {
+//         var payloadContent = new StudentResourcePayloadContent()
+//         {
+//             BasePath = _basePath,
+//             StudentUniqueId = _studentUniqueId
+//         };
         
-        await payloadContent.ExecuteAsync();
-        return payloadContent;
-    }
+//         await payloadContent.ExecuteAsync();
+//         return payloadContent;
+//     }
 
-}
+// }

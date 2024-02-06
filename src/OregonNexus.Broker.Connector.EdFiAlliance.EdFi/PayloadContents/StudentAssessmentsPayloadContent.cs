@@ -11,19 +11,23 @@ public class StudentAssessmentsPayloadContent : DataContentType
     public override string Schema => "EdFi";
     public override string SchemaVersion => "3";
     public override string ContentType => "text/json";
-    public override string? Content { get; set; }
+    public override string Content { 
+        get {
+            return JsonSerializer.Serialize(JsonContent);
+        }
+    }
     public string BasePath {get;set;}
     public string StudentUniqueId {get;set;}
-    private async Task<StudentAssessmentsPayloadContent> ExecuteAsync()
-    {
-        var api = new StudentAssessmentsApi(BasePath);
-        var response = await api.GetStudentAssessmentsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
-        var assessments = response.Data;
+    // private async Task<StudentAssessmentsPayloadContent> ExecuteAsync()
+    // {
+    //     var api = new StudentAssessmentsApi(BasePath);
+    //     var response = await api.GetStudentAssessmentsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
+    //     var assessments = response.Data;
 
-        var dataContent = new StudentAssessmentsPayloadContent()
-        {
-            Content = JsonSerializer.Serialize(assessments)
-        };
-        return dataContent;
-    }
+    //     var dataContent = new StudentAssessmentsPayloadContent()
+    //     {
+    //         Content = JsonSerializer.Serialize(assessments)
+    //     };
+    //     return dataContent;
+    // }
 }

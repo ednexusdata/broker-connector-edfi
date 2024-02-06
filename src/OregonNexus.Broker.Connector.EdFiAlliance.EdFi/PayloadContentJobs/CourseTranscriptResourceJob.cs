@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Configuration;
 using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 using OregonNexus.Broker.Connector.PayloadContents;
+using OregonNexus.Broker.Connector.PayloadContentTypes;
 using OregonNexus.Broker.Connector.Resolvers;
 using EdFiOdsSdk = EdFi.OdsApi.Sdk.Client;
 
@@ -19,9 +20,9 @@ public class CourseTranscriptResourceJob : IPayloadContentJob
         _configurationResolver = configurationResolver;
     }
 
-    public async Task<CourseTranscriptsPayloadContent> ExecuteAsync<CourseTranscriptsPayloadContent>(string studentUniqueId)
+    public async Task<PayloadContentType> ExecuteAsync(string studentUniqueId, Guid educationOrganizationId)
     {
-        var connection = await _configurationResolver.FetchConnectorSettingsAsync<Connection>();
+        var connection = await _configurationResolver.FetchConnectorSettingsAsync<Connection>(educationOrganizationId);
         
         // TokenRetriever makes the oauth calls.  It has RestSharp dependency, install via NuGet
         var tokenRetriever = new TokenRetriever(connection.EdFiApiUrl, connection.Key, connection.Secret);
@@ -37,9 +38,12 @@ public class CourseTranscriptResourceJob : IPayloadContentJob
         var response = await api.GetCourseTranscriptsWithHttpInfoAsync(studentUniqueId: studentUniqueId);
         var courseTranscripts = response.Data;
 
-        Assembly assem = typeof(CourseTranscriptsPayloadContent).Assembly;
-        CourseTranscriptsPayloadContent dataContent = (CourseTranscriptsPayloadContent)assem.CreateInstance(nameof(CourseTranscriptsPayloadContent))!;
-        dataContent.Content = JsonSerializer.Serialize(courseTranscripts);
+        var dataContent = new CourseTranscriptsPayloadContent()
+        {
+            JsonContent = JsonSerializer.SerializeToDocument(courseTranscripts)
+        };
+
+        Console.WriteLine(dataContent.JsonContent);
 
         return dataContent;
     }
