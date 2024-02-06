@@ -43,8 +43,6 @@ public class CourseTranscriptResourceJob : IPayloadContentJob
             JsonContent = JsonSerializer.SerializeToDocument(courseTranscripts)
         };
 
-        Console.WriteLine(dataContent.JsonContent);
-
         return dataContent;
     }
 }
