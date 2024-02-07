@@ -1,7 +1,5 @@
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-//using OregonNexus.Broker.Connector.Authentication;
-//using OregonNexus.Broker.Connector.Locators;
+using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi;
 
@@ -16,6 +14,8 @@ public class ServiceCollection : IConnectorServiceCollection
 
     public static IServiceCollection AddDependencies(IServiceCollection services)
     {
+        services.AddScoped<OAuthTokenResolver>();
+        
         return services;
     }
 }
