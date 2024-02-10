@@ -13,9 +13,9 @@ public class OAuthTokenResolver
         _configurationResolver = configurationResolver;
     }
 
-    public async Task<EdFiOdsSdk.Configuration> Resolve(Guid educationOrganizationId)
+    public async Task<EdFiOdsSdk.Configuration> Resolve()
     {
-        var connection = await _configurationResolver.FetchConnectorSettingsAsync<Connection>(educationOrganizationId);
+        var connection = await _configurationResolver.FetchConnectorSettingsAsync<Connection>();
         
         // TokenRetriever makes the oauth calls.  It has RestSharp dependency, install via NuGet
         var tokenRetriever = new TokenRetriever(connection.EdFiApiUrl, connection.Key, connection.Secret);

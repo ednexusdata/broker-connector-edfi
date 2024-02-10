@@ -6,18 +6,18 @@ using OregonNexus.Broker.Connector.PayloadContentTypes;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
-public class CourseTranscriptResourceJob : IPayloadContentJob
+public class CourseTranscriptsJob : IPayloadContentJob
 {
     private readonly OAuthTokenResolver _tokenResolver;
 
-    public CourseTranscriptResourceJob(OAuthTokenResolver tokenResolver)
+    public CourseTranscriptsJob(OAuthTokenResolver tokenResolver)
     {
         _tokenResolver = tokenResolver;
     }
 
-    public async Task<PayloadContentType> ExecuteAsync(string studentUniqueId, Guid educationOrganizationId)
+    public async Task<PayloadContentType> ExecuteAsync(string studentUniqueId)
     {
-        var configuration = await _tokenResolver.Resolve(educationOrganizationId);
+        var configuration = await _tokenResolver.Resolve();
         
         var api = new CourseTranscriptsApi(configuration);
         var response = await api.GetCourseTranscriptsWithHttpInfoAsync(studentUniqueId: studentUniqueId);
