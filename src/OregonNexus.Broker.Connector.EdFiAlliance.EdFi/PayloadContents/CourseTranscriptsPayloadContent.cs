@@ -8,15 +8,9 @@ namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
 [Job(typeof(CourseTranscriptsJob))]
 [DisplayName("Course Transcripts")]
-public class CourseTranscriptsPayloadContent : DataContentType
+public class CourseTranscriptsPayloadContent : PayloadContentType
 {
     public override string Schema => "EdFi";
     public override string SchemaVersion => "3";
     public override string ContentType => "application/json";
-
-    public override string Content { 
-        get {
-            return JsonSerializer.Serialize(JsonContent);
-        }
-    }
 }

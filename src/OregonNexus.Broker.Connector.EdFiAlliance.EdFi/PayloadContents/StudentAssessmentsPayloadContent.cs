@@ -6,18 +6,12 @@ using OregonNexus.Broker.Connector.PayloadContentTypes;
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
 [DisplayName("Assessments")]
-public class StudentAssessmentsPayloadContent : DataContentType
+public class StudentAssessmentsPayloadContent : PayloadContentType
 {
     public override string Schema => "EdFi";
     public override string SchemaVersion => "3";
     public override string ContentType => "text/json";
-    public override string Content { 
-        get {
-            return JsonSerializer.Serialize(JsonContent);
-        }
-    }
-    public string BasePath {get;set;}
-    public string StudentUniqueId {get;set;}
+
     // private async Task<StudentAssessmentsPayloadContent> ExecuteAsync()
     // {
     //     var api = new StudentAssessmentsApi(BasePath);

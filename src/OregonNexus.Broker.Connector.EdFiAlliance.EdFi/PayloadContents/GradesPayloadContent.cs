@@ -6,19 +6,11 @@ using OregonNexus.Broker.Connector.PayloadContentTypes;
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
 [DisplayName("Grades")]
-public class GradesPayloadContent : DataContentType
+public class GradesPayloadContent : PayloadContentType
 {
     public override string Schema => "EdFi";
     public override string SchemaVersion => "3";
     public override string ContentType => "text/json";
-    public string BasePath {get;set;}
-    public string StudentUniqueId {get;set;}
-
-    public override string Content { 
-        get {
-            return JsonSerializer.Serialize(JsonContent);
-        }
-    }
 
     // private async Task<GradesPayloadContent> ExecuteAsync()
     // {

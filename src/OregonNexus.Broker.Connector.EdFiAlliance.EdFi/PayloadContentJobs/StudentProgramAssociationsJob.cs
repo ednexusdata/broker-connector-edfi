@@ -1,4 +1,3 @@
-using System.Text.Json;
 using EdFi.OdsApi.Sdk.Apis.All;
 using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 using OregonNexus.Broker.Connector.PayloadContents;
@@ -24,7 +23,7 @@ public class StudentProgramAssociationsJob : IPayloadContentJob
 
         var dataContent = new StudentProgramAssociationsPayloadContent()
         {
-            JsonContent = JsonSerializer.SerializeToDocument(response.Data)
+            Content = response.Data
         };
 
         return dataContent;
