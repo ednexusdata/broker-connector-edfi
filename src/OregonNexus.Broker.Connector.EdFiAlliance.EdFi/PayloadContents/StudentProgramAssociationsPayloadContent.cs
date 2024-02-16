@@ -10,7 +10,7 @@ namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 [DisplayName("Student Programs")]
 public class StudentProgramAssociationsPayloadContent : PayloadContentType
 {
-    public override string Schema => "EdFi";
+    public override string Schema => "EdFi.Resources.StudentProgramAssociations";
     public override string SchemaVersion => "3";
     public override string ContentType => "application/json";
 }
