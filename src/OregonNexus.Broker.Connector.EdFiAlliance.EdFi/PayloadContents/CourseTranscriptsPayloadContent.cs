@@ -15,7 +15,8 @@ public class CourseTranscriptsPayloadContent : PayloadContentType
     {
         Owner = "EdFi",
         Schema = "EdFi.Resources.CourseTranscript",
-        ObjectType = nameof(EdFiCourseTranscript),
+        ObjectType = typeof(CourseTranscriptsPayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiCourseTranscript).FullName!,
         SchemaVersion = "3"
     };
 }

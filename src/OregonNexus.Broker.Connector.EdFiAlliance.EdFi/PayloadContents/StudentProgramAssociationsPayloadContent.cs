@@ -15,7 +15,8 @@ public class StudentProgramAssociationsPayloadContent : PayloadContentType
     {
         Owner = "EdFi",
         Schema = "EdFi.Resources.StudentProgramAssociations",
-        ObjectType = nameof(EdFiStudentProgramAssociation),
+        ObjectType = typeof(StudentProgramAssociationsPayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiStudentProgramAssociation).FullName!,
         SchemaVersion = "3"
     };
 }
