@@ -1,16 +1,22 @@
 using System.ComponentModel;
 using System.Text.Json;
 using EdFi.OdsApi.Sdk.Apis.All;
+using EdFi.OdsApi.Sdk.Models.All;
 using OregonNexus.Broker.Connector.PayloadContentTypes;
+using OregonNexus.Broker.Domain;
 
 namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
 [DisplayName("Discipline Actions")]
 public class DisciplineActionsPayloadContent : PayloadContentType
 {
-    public override string Schema => "EdFi";
-    public override string SchemaVersion => "3";
-    public override string ContentType => "text/json";
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.DisciplineAction",
+        ObjectType = nameof(EdFiDisciplineAction),
+        SchemaVersion = "3"
+    };
 
     // private async Task<DisciplineActionsPayloadContent> ExecuteAsync()
     // {
