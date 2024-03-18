@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using OregonNexus.Broker.Connector.Configuration;
+using EdNexusData.Broker.Connector.Configuration;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Configuration;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
 
 [DisplayName("Connection")]
 public class Connection : IConfiguration

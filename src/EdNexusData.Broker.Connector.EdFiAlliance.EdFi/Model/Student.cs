@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using OregonNexus.Broker.Connector.Student;
+using EdNexusData.Broker.Connector.Student;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi;
 
 public class Student : IStudent
 {

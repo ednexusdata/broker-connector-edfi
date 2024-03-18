@@ -2,10 +2,10 @@ using System.ComponentModel;
 using System.Text.Json;
 using EdFi.OdsApi.Sdk.Apis.All;
 using EdFi.OdsApi.Sdk.Models.All;
-using OregonNexus.Broker.Connector.PayloadContentTypes;
-using OregonNexus.Broker.Domain;
+using EdNexusData.Broker.Connector.PayloadContentTypes;
+using EdNexusData.Broker.Domain;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
 [DisplayName("Discipline Actions")]
 public class DisciplineActionsPayloadContent : PayloadContentType

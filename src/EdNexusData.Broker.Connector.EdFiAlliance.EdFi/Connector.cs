@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
-using OregonNexus.Broker.Connector;
+using EdNexusData.Broker.Connector;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi;
 
 [DisplayName("Ed-Fi by ENO")]
 public class Connector : IConnector

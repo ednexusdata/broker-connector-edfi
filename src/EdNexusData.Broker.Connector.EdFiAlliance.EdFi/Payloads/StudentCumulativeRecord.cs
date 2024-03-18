@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Payloads;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Payloads;
 
 [DisplayName("Student Cumulative Record")]
 public class StudentCumulativeRecord

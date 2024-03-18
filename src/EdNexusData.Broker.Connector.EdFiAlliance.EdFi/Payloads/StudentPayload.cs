@@ -1,4 +1,4 @@
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Payloads;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Payloads;
 public class StudentPayload
 {
     public async Task<StudentCumulativeRecord> GetById(

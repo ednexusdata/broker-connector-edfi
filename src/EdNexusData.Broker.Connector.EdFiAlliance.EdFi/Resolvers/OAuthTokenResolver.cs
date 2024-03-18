@@ -1,8 +1,8 @@
-using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Configuration;
-using OregonNexus.Broker.Connector.Resolvers;
+using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
+using EdNexusData.Broker.Connector.Resolvers;
 using EdFiOdsSdk = EdFi.OdsApi.Sdk.Client;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Jobs;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
 public class OAuthTokenResolver
 {

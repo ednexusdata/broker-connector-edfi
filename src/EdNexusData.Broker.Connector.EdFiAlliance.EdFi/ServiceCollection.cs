@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
-using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Jobs;
+using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi;
 
 public class ServiceCollection : IConnectorServiceCollection
 {

@@ -1,16 +1,16 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using OregonNexus.Broker.Connector.Configuration;
-using OregonNexus.Broker.Domain;
-using OregonNexus.Broker.Connector.StudentLookup;
+using EdNexusData.Broker.Connector.Configuration;
+using EdNexusData.Broker.Domain;
+using EdNexusData.Broker.Connector.StudentLookup;
 using EdFi.OdsApi.Sdk.Apis.All;
 using EdFiOdsSdk = EdFi.OdsApi.Sdk.Client;
-using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Configuration;
-using OregonNexus.Broker.Connector.Resolvers;
-using OregonNexus.Broker.Connector.Student;
+using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
+using EdNexusData.Broker.Connector.Resolvers;
+using EdNexusData.Broker.Connector.Student;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Services;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Services;
 
 public class StudentLookupService : IStudentLookupService
 {

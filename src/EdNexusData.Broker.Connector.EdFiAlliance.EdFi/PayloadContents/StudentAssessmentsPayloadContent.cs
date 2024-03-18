@@ -1,9 +1,9 @@
 using System.ComponentModel;
 using EdFi.OdsApi.Sdk.Models.All;
-using OregonNexus.Broker.Connector.PayloadContentTypes;
-using OregonNexus.Broker.Domain;
+using EdNexusData.Broker.Connector.PayloadContentTypes;
+using EdNexusData.Broker.Domain;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
 [DisplayName("Assessments")]
 public class StudentAssessmentsPayloadContent : PayloadContentType

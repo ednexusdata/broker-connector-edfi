@@ -4,7 +4,7 @@ using System.Security.Authentication;
 using EdFi.OdsApi.Sdk.Client;
 using Config = EdFi.OdsApi.Sdk.Client.Configuration;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi;
 
 public class TokenRetriever
 {

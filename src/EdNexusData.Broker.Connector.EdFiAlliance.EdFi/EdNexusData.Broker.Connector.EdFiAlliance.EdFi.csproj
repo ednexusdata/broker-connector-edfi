@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\broker-core\src\OregonNexus.Broker.Connector\OregonNexus.Broker.Connector.csproj" />
+    <ProjectReference Include="..\..\..\broker-core\src\EdNexusData.Broker.Connector\EdNexusData.Broker.Connector.csproj" />
     <ProjectReference Include="..\EdFi.OdsApi.Sdk\EdFi.OdsApi.Sdk.csproj" />
   </ItemGroup>
 

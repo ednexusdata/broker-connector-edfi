@@ -1,9 +1,9 @@
 using EdFi.OdsApi.Sdk.Apis.All;
-using OregonNexus.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
-using OregonNexus.Broker.Connector.PayloadContents;
-using OregonNexus.Broker.Connector.PayloadContentTypes;
+using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+using EdNexusData.Broker.Connector.PayloadContents;
+using EdNexusData.Broker.Connector.PayloadContentTypes;
 
-namespace OregonNexus.Broker.Connector.EdFiAlliance.EdFi.Jobs;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
 public class CourseTranscriptsJob : IPayloadContentJob
 {
