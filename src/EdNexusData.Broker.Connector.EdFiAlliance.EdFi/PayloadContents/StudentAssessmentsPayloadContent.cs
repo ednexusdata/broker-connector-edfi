@@ -1,10 +1,13 @@
 using System.ComponentModel;
 using EdFi.OdsApi.Sdk.Models.All;
+using EdNexusData.Broker.Connector.Attributes;
+using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 using EdNexusData.Broker.Connector.PayloadContentTypes;
 using EdNexusData.Broker.Domain;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
+[Job(typeof(StudentAssessmentsJob))]
 [DisplayName("Assessments")]
 public class StudentAssessmentsPayloadContent : PayloadContentType
 {
@@ -13,19 +16,6 @@ public class StudentAssessmentsPayloadContent : PayloadContentType
         Owner = "EdFi",
         Schema = "EdFi.Resources.StudentAssessment",
         ObjectType = nameof(EdFiStudentAssessment),
-        SchemaVersion = "3"
+        SchemaVersion = "4.0.0"
     };
-
-    // private async Task<StudentAssessmentsPayloadContent> ExecuteAsync()
-    // {
-    //     var api = new StudentAssessmentsApi(BasePath);
-    //     var response = await api.GetStudentAssessmentsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
-    //     var assessments = response.Data;
-
-    //     var dataContent = new StudentAssessmentsPayloadContent()
-    //     {
-    //         Content = JsonSerializer.Serialize(assessments)
-    //     };
-    //     return dataContent;
-    // }
 }

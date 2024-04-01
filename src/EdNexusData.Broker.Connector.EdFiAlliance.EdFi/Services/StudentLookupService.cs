@@ -1,41 +1,22 @@
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using EdNexusData.Broker.Connector.Configuration;
-using EdNexusData.Broker.Domain;
 using EdNexusData.Broker.Connector.StudentLookup;
 using EdFi.OdsApi.Sdk.Apis.All;
-using EdFiOdsSdk = EdFi.OdsApi.Sdk.Client;
-using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
-using EdNexusData.Broker.Connector.Resolvers;
-using EdNexusData.Broker.Connector.Student;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Services;
 
 public class StudentLookupService : IStudentLookupService
 {
-   private readonly IConfigurationResolver _configurationResolver;
+   private readonly OAuthTokenResolver _tokenResolver;
 
-   public StudentLookupService(IConfigurationResolver configurationResolver)
+   public StudentLookupService(OAuthTokenResolver tokenResolver)
    {
-        _configurationResolver = configurationResolver;
+        _tokenResolver = tokenResolver;
    }
 
    public async Task<List<StudentLookupResult>> SearchAsync(Domain.Student studentParameters)
    {
-        var connection = await _configurationResolver.FetchConnectorSettingsAsync<Connection>();
-        
-        // TokenRetriever makes the oauth calls.  It has RestSharp dependency, install via NuGet
-        var tokenRetriever = new TokenRetriever(connection.EdFiApiUrl, connection.Key, connection.Secret);
+        var configuration = await _tokenResolver.Resolve();
 
-        // Plug Oauth access token. Tokens will need to be refreshed when they expire
-        var configuration = new EdFiOdsSdk.Configuration()
-        {
-            AccessToken = await tokenRetriever.ObtainNewBearerToken(),
-            BasePath = $"{connection.EdFiApiUrl}/data/v3"
-        };
-
-        // New up StudentsApi
         var edfiStudentsApi = new StudentsApi(configuration);
         var edfiResults = await edfiStudentsApi.GetStudentsAsync(firstName: studentParameters.FirstName);
         edfiResults.AddRange(await edfiStudentsApi.GetStudentsAsync(lastSurname: studentParameters.LastName));

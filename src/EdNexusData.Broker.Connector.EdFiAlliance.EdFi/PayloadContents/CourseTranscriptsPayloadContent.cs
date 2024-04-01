@@ -17,6 +17,6 @@ public class CourseTranscriptsPayloadContent : PayloadContentType
         Schema = "EdFi.Resources.CourseTranscript",
         ObjectType = typeof(CourseTranscriptsPayloadContent).FullName!,
         ContentObjectType = typeof(EdFiCourseTranscript).FullName!,
-        SchemaVersion = "3"
+        SchemaVersion = "4.0.0"
     };
 }

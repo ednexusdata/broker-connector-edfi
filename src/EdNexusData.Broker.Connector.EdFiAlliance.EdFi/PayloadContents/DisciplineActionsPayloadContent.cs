@@ -1,12 +1,13 @@
 using System.ComponentModel;
-using System.Text.Json;
-using EdFi.OdsApi.Sdk.Apis.All;
 using EdFi.OdsApi.Sdk.Models.All;
+using EdNexusData.Broker.Connector.Attributes;
+using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 using EdNexusData.Broker.Connector.PayloadContentTypes;
 using EdNexusData.Broker.Domain;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
+[Job(typeof(DisciplineActionsJob))]
 [DisplayName("Discipline Actions")]
 public class DisciplineActionsPayloadContent : PayloadContentType
 {
@@ -15,20 +16,7 @@ public class DisciplineActionsPayloadContent : PayloadContentType
         Owner = "EdFi",
         Schema = "EdFi.Resources.DisciplineAction",
         ObjectType = nameof(EdFiDisciplineAction),
-        SchemaVersion = "3"
+        SchemaVersion = "4.0.0"
     };
-
-    // private async Task<DisciplineActionsPayloadContent> ExecuteAsync()
-    // {
-    //     var api = new DisciplineActionsApi(BasePath);
-    //     var response = await api.GetDisciplineActionsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
-    //     var disciplineActions = response.Data;
-
-    //     var dataContent = new DisciplineActionsPayloadContent()
-    //     {
-    //         Content = JsonSerializer.Serialize(disciplineActions)
-    //     };
-    //     return dataContent;
-    // }
 
 }

@@ -1,8 +1,8 @@
-using EdFi.OdsApi.Sdk.Apis.All;
-using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
-using EdNexusData.Broker.Connector.PayloadContents;
+// using EdFi.OdsApi.Sdk.Apis.All;
+// using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+// using EdNexusData.Broker.Connector.PayloadContents;
 
-namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
+// namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
 // public class StudentResourceJob : IPayloadContentJob
 // {

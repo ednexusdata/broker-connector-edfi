@@ -1,11 +1,11 @@
-using System.ComponentModel;
-using System.Text.Json;
-using EdFi.OdsApi.Sdk.Apis.All;
-using Microsoft.Extensions.Logging;
-using EdNexusData.Broker.Connector.PayloadContents;
-using EdNexusData.Broker.Connector.PayloadContentTypes;
+// using System.ComponentModel;
+// using System.Text.Json;
+// using EdFi.OdsApi.Sdk.Apis.All;
+// using Microsoft.Extensions.Logging;
+// using EdNexusData.Broker.Connector.PayloadContents;
+// using EdNexusData.Broker.Connector.PayloadContentTypes;
 
-namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+// namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
 // [DisplayName("Student")]
 // public class StudentResourcePayloadContent : DataContentType

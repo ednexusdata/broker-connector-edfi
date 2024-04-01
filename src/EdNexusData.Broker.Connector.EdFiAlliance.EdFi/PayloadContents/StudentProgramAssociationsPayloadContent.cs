@@ -17,6 +17,6 @@ public class StudentProgramAssociationsPayloadContent : PayloadContentType
         Schema = "EdFi.Resources.StudentProgramAssociations",
         ObjectType = typeof(StudentProgramAssociationsPayloadContent).FullName!,
         ContentObjectType = typeof(EdFiStudentProgramAssociation).FullName!,
-        SchemaVersion = "3"
+        SchemaVersion = "4.0.0"
     };
 }
