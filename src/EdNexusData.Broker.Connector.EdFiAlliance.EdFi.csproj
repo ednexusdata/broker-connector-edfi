@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\broker-core\src\EdNexusData.Broker.Connector\EdNexusData.Broker.Connector.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EdFi.Suite3.OdsApi.Sdk.71" Version="1.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.*" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <RestoreAdditionalProjectSources>
+      https://nuget.pkg.github.com/ednexusdata/index.json
+    </RestoreAdditionalProjectSources>
+  </PropertyGroup>
+</Project>
