@@ -15,7 +15,8 @@ public class DisciplineActionsPayloadContent : PayloadContentType
     {
         Owner = "EdFi",
         Schema = "EdFi.Resources.DisciplineAction",
-        ObjectType = nameof(EdFiDisciplineAction),
+        ObjectType = typeof(DisciplineActionsPayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiDisciplineAction).FullName!,
         SchemaVersion = "4.0.0"
     };
 

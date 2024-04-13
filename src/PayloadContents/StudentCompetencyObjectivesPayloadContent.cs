@@ -7,16 +7,17 @@ using EdNexusData.Broker.Domain;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
-[Job(typeof(StudentAssessmentsJob))]
-[DisplayName("Assessments")]
-public class StudentAssessmentsPayloadContent : PayloadContentType
+[Job(typeof(StudentCompetencyObjectivesJob))]
+[DisplayName("Student Competency Objectives")]
+public class StudentCompetencyObjectivesPayloadContent : PayloadContentType
 {
     public override PayloadContentSchema Schema => new PayloadContentSchema()
     {
         Owner = "EdFi",
-        Schema = "EdFi.Resources.StudentAssessment",
-        ObjectType = typeof(StudentAssessmentsPayloadContent).FullName!,
-        ContentObjectType = typeof(EdFiStudentAssessment).FullName!,
+        Schema = "EdFi.Resources.StudentCompetencyObjectives",
+        ObjectType = typeof(StudentCompetencyObjectivesPayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiStudentCompetencyObjective).FullName!,
         SchemaVersion = "4.0.0"
     };
+
 }

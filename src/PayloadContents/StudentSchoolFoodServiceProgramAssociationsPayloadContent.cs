@@ -7,16 +7,16 @@ using EdNexusData.Broker.Domain;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
-[Job(typeof(StudentAssessmentsJob))]
-[DisplayName("Assessments")]
-public class StudentAssessmentsPayloadContent : PayloadContentType
+[Job(typeof(StudentSchoolFoodServiceProgramAssociationsJob))]
+[DisplayName("Student School Food Service Programs")]
+public class StudentSchoolFoodServiceProgramAssociationsPayloadContent : PayloadContentType
 {
     public override PayloadContentSchema Schema => new PayloadContentSchema()
     {
         Owner = "EdFi",
-        Schema = "EdFi.Resources.StudentAssessment",
-        ObjectType = typeof(StudentAssessmentsPayloadContent).FullName!,
-        ContentObjectType = typeof(EdFiStudentAssessment).FullName!,
+        Schema = "EdFi.Resources.StudentSchoolFoodServiceProgram",
+        ObjectType = typeof(StudentSchoolFoodServiceProgramAssociationsPayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiStudentSchoolFoodServiceProgramAssociation).FullName!,
         SchemaVersion = "4.0.0"
     };
 }
