@@ -1,15 +1,12 @@
-using System.ComponentModel;
 using EdFi.OdsApi.Sdk.Models.All;
 using EdNexusData.Broker.Connector.Attributes;
 using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
-using EdNexusData.Broker.Connector.PayloadContentTypes;
+using EdNexusData.Broker.Connector;
 using EdNexusData.Broker.Domain;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
-[Job(typeof(StudentSpecialEducationProgramEligibilityAssociationsJob))]
-[DisplayName("Student Special Education Programs Eligibility")]
-public class StudentSpecialEducationProgramEligibilityAssociationsPayloadContent : PayloadContentType
+public class StudentSpecialEducationProgramEligibilityAssociationsPayloadContent : DataPayloadContent
 {
     public override PayloadContentSchema Schema => new PayloadContentSchema()
     {

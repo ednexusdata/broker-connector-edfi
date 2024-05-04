@@ -1,11 +1,12 @@
+using System.ComponentModel;
 using EdFi.OdsApi.Sdk.Apis.All;
 using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
-using EdNexusData.Broker.Connector.PayloadContents;
-using EdNexusData.Broker.Connector.PayloadContentTypes;
+using EdNexusData.Broker.Connector;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
-public class StudentTitleIPartAProgramAssociationsJob : IPayloadContentJob
+[DisplayName("Student Title I Part A Programs")]
+public class StudentTitleIPartAProgramAssociationsJob : PayloadJob
 {
     private readonly OAuthTokenResolver _tokenResolver;
 
@@ -14,7 +15,7 @@ public class StudentTitleIPartAProgramAssociationsJob : IPayloadContentJob
         _tokenResolver = tokenResolver;
     }
 
-    public async Task<PayloadContentType> ExecuteAsync(string studentUniqueId)
+    public override async Task<object?> ExecuteAsync(string studentUniqueId)
     {
         var configuration = await _tokenResolver.Resolve();
         
