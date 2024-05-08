@@ -2,6 +2,7 @@ using System.ComponentModel;
 using EdFi.OdsApi.Sdk.Apis.All;
 using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 using EdNexusData.Broker.Connector;
+using System.Text.Json;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 
@@ -15,11 +16,11 @@ public class StudentSpecialEducationProgramEligibilityAssociationsJob : PayloadJ
         _tokenResolver = tokenResolver;
     }
 
-    public override async Task<object?> ExecuteAsync(string studentUniqueId)
+    public override async Task<object?> ExecuteAsync(string studentUniqueId, JsonDocument? configuration)
     {
-        var configuration = await _tokenResolver.Resolve();
+        var config = await _tokenResolver.Resolve();
         
-        var api = new StudentSpecialEducationProgramEligibilityAssociationsApi(configuration);
+        var api = new StudentSpecialEducationProgramEligibilityAssociationsApi(config);
         var response = await api.GetStudentSpecialEducationProgramEligibilityAssociationsWithHttpInfoAsync(studentUniqueId: studentUniqueId);
 
         var dataContent = new StudentSpecialEducationProgramEligibilityAssociationsPayloadContent()
