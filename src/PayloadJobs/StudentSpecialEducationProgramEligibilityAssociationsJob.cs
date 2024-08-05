@@ -28,6 +28,11 @@ public class StudentSpecialEducationProgramEligibilityAssociationsJob : PayloadJ
             Content = response.Data
         };
 
-        return dataContent;
+        if (response.Data.Count() > 0)
+        {
+            return dataContent;
+        }
+
+        return null;
     }
 }

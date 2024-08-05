@@ -28,6 +28,11 @@ public class StudentInterventionAssociationsJob : PayloadJob
             Content = response.Data
         };
 
-        return dataContent;
+        if (response.Data.Count() > 0)
+        {
+            return dataContent;
+        }
+
+        return null;
     }
 }
