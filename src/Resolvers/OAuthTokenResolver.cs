@@ -1,6 +1,5 @@
-using Ardalis.GuardClauses;
+using EdNexusData.Broker.Core.Configuration;
 using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
-using EdNexusData.Broker.Connector.Resolvers;
 using EdFiOdsSdk = EdFi.OdsApi.Sdk.Client;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
@@ -24,7 +23,7 @@ public class OAuthTokenResolver
         // Retrieve token
         var retrievedToken = await tokenRetriever.ObtainNewBearerToken();
 
-        Guard.Against.Null(retrievedToken, "retrievedToken", $"Unable to retrieve token for {connection.EdFiApiUrl}");
+        _ = retrievedToken ?? throw new ArgumentNullException($"Unable to retrieve token for {connection.EdFiApiUrl} / {nameof(retrievedToken)}");
 
         // Plug OAuth access token. Tokens will need to be refreshed when they expire
         var configuration = new EdFiOdsSdk.Configuration()

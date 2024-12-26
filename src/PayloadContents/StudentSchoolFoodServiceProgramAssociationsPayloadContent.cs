@@ -1,8 +1,4 @@
-using EdFi.OdsApi.Sdk.Models.All;
-using EdNexusData.Broker.Connector.Attributes;
-using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
-using EdNexusData.Broker.Connector;
-using EdNexusData.Broker.Domain;
+using EdNexusData.Broker.Core.PayloadContents;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 

@@ -1,6 +1,5 @@
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using EdNexusData.Broker.Connector.Student;
+using EdNexusData.Broker.Core.Students;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi;
 

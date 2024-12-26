@@ -1,6 +1,5 @@
-using EdNexusData.Broker.Connector.StudentLookup;
-using EdFi.OdsApi.Sdk.Apis.All;
 using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
+using EdNexusData.Broker.Core.StudentLookup;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Services;
 
@@ -13,7 +12,7 @@ public class StudentLookupService : IStudentLookupService
         _tokenResolver = tokenResolver;
    }
 
-   public async Task<List<StudentLookupResult>> SearchAsync(Domain.Student studentParameters)
+   public async Task<List<StudentLookupResult>> SearchAsync(Core.Students.Student studentParameters)
    {
         var configuration = await _tokenResolver.Resolve();
 
