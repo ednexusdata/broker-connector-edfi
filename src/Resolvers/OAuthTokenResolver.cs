@@ -1,4 +1,4 @@
-using EdNexusData.Broker.Core.Configuration;
+using EdNexusData.Broker.Common.Configuration;
 using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
 using EdFiOdsSdk = EdFi.OdsApi.Sdk.Client;
 

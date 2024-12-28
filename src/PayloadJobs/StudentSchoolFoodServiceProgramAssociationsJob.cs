@@ -1,4 +1,4 @@
-using EdNexusData.Broker.Core.Jobs;
+using EdNexusData.Broker.Common.Jobs;
 using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;

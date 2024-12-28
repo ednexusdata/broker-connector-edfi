@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using EdNexusData.Broker.Core.Configuration;
+using EdNexusData.Broker.Common.Configuration;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
 

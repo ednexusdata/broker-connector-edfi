@@ -1,4 +1,4 @@
-using EdNexusData.Broker.Core.PayloadContents;
+using EdNexusData.Broker.Common.PayloadContents;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 

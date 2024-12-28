@@ -1,4 +1,4 @@
-﻿using EdNexusData.Broker.Core.Connector;
+﻿using EdNexusData.Broker.Common.Connector;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi;
 
