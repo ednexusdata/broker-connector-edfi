@@ -3,7 +3,7 @@
 // using EdNexusData.Broker.Connector.Attributes;
 // using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 // using EdNexusData.Broker.Connector.PayloadContentTypes;
-// using EdNexusData.Broker.Domain;
+// using EdNexusData.Broker.Core;
 
 // namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
