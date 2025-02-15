@@ -29,9 +29,9 @@ public class TokenRetriever
     {
         var configuration = new Config() { BasePath = oauthUrl };
         var bearerTokenRequestOptions = new RequestOptions() { Operation = String.Empty };
-        bearerTokenRequestOptions.FormParameters.Add("Client_id", clientKey);
-        bearerTokenRequestOptions.FormParameters.Add("Client_secret", clientSecret);
-        bearerTokenRequestOptions.FormParameters.Add("Grant_type", "client_credentials");
+        bearerTokenRequestOptions.FormParameters.Add("client_id", clientKey);
+        bearerTokenRequestOptions.FormParameters.Add("client_secret", clientSecret);
+        bearerTokenRequestOptions.FormParameters.Add("grant_type", "client_credentials");
 
         var bearerTokenResponse = await oauthClient.PostAsync<BearerTokenResponse>("oauth/token", bearerTokenRequestOptions, configuration);
 

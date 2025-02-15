@@ -18,18 +18,18 @@ public class OAuthTokenResolver
         var connection = await _configurationResolver.FetchConnectorSettingsAsync<Connection>();
         
         // TokenRetriever makes the oauth calls.  It has RestSharp dependency, install via NuGet
-        var tokenRetriever = new TokenRetriever(connection.EdFiApiUrl, connection.Key, connection.Secret);
+        var tokenRetriever = new TokenRetriever(connection.EdFiApiOAuthUrl, connection.Key, connection.Secret);
 
         // Retrieve token
         var retrievedToken = await tokenRetriever.ObtainNewBearerToken();
 
-        _ = retrievedToken ?? throw new ArgumentNullException($"Unable to retrieve token for {connection.EdFiApiUrl} / {nameof(retrievedToken)}");
+        _ = retrievedToken ?? throw new ArgumentNullException($"Unable to retrieve token for {connection.EdFiApiOAuthUrl} / {nameof(retrievedToken)}");
 
         // Plug OAuth access token. Tokens will need to be refreshed when they expire
         var configuration = new EdFiOdsSdk.Configuration()
         {
             AccessToken = retrievedToken,
-            BasePath = $"{connection.EdFiApiUrl}/data/v3"
+            BasePath = $"{connection.EdFiApiUrl}"
         };
 
         return configuration;

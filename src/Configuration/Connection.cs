@@ -7,6 +7,11 @@ namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
 public class Connection : IConfiguration
 {
     [DataType(DataType.Url)]
+    [DisplayName("Ed-Fi API OAuth URL")]
+    [Description("The URL of the OAuth endpoint of the Ed-Fi API instance to connect to.")]
+    public string EdFiApiOAuthUrl { get; set; } = default!;
+
+    [DataType(DataType.Url)]
     [DisplayName("Ed-Fi API URL")]
     [Description("The URL of the Ed-Fi API instance to connect to.")]
     public string EdFiApiUrl { get; set; } = default!;
