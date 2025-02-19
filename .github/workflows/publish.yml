@@ -25,7 +25,7 @@ jobs:
           dotnet-version: 8.x
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore /home/runner/work/broker-connector-edfi/broker-connector-edfi/src/EdNexusData.Broker.Connector.EdFiAlliance.EdFi.csproj
 
       - name: Build
         shell: bash
