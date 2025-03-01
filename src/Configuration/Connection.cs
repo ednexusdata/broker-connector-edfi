@@ -20,7 +20,7 @@ public class Connection : IConfiguration
     [Description("The key to connect to the Ed-Fi API instance specified in Ed-Fi API URL.")]
     public string Key { get; set; } = default!;
 
-    [DataType(DataType.Text)]
+    [DataType(DataType.Password)]
     [Description("The secret to connect to the Ed-Fi API instance specified in Ed-Fi API URL.")]
     public string Secret { get; set; } = default!;
 }
