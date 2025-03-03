@@ -47,9 +47,9 @@ public class CourseTranscriptsJob : PayloadJob
                 Content = courseRecords
             };
 
-            // dataContent.AdditionalContents.Add(
-            //     coursePayloadContents
-            // );
+            dataContent.AdditionalContents.Add(
+                coursePayloadContents
+            );
         }
 
         if (response.Data.Count() > 0)
