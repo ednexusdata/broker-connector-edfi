@@ -1,21 +1,48 @@
 name: Publish
 
+run-name: "Publish EdNeuxsData.Broker.Connectors.EdFiAlliance.EdFi"
+
 on:
+  push:
+    tags:
+      - 'edge-*'
   release:
     types: [published]
+  repository_dispatch:
+    types: [trigger-next]
 
 jobs:
   release:
     name: Release
     strategy:
       matrix:
-        kind: ['linux']
+        kind: ['linux/amd64','linux/arm64']
         include:
-          - kind: linux
+          - kind: linux/amd64
             os: ubuntu-latest
-            target: linux-x64
+            target: linux-amd64
+          - kind: linux/arm64
+            os: ubuntu-latest
+            target: linux-arm64
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Determine Triggered Tag
+        id: triggered_tag
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            echo "Triggered by Release: ${{ github.event.release.tag_name }}"
+            echo "triggered_tag=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
+            echo "TRIGGERED_TAG=${{ github.event.release.tag_name }}" >> "$GITHUB_ENV"
+          elif [[ "${{ github.event_name }}" == "repository_dispatch" && "${{ github.event.action }}" == "trigger-next" ]]; then
+            echo "Triggered by client-payload: ${{ github.event.client_payload.tag }}"
+            echo "triggered_tag=${{ github.event.client_payload.tag }}" >> "$GITHUB_OUTPUT"
+            echo "TRIGGERED_TAG=${{ github.event.client_payload.tag }}" >> "$GITHUB_ENV"
+          else
+            echo "Triggered by Push: ${{ github.ref_name }}"
+            echo "triggered_tag=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
+            echo "TRIGGERED_TAG=${{ github.ref_name }}" >> "$GITHUB_ENV"
+          fi
+    
       - name: Checkout repository
         uses: actions/checkout@v4
         
@@ -33,7 +60,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          tag=$(git describe --tags --abbrev=0)
+          tag=${{ env.TRIGGERED_TAG }}
           release_name="EdNexusData.Broker.Connector.EdFiAlliance.EdFi-$tag-${{ matrix.target }}"
 
           # Build everything
@@ -54,5 +81,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: "EdNexusData.Broker.Connector.EdFiAlliance.EdFi*"
+          tag_name: ${{ env.TRIGGERED_TAG }}
+          prerelease: true
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
