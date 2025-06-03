@@ -37,7 +37,7 @@ jobs:
           echo "Current Commit: $CURRENT_COMMIT"
 
           # if [[ "$LAST_COMMIT_STORED" != "$CURRENT_COMMIT" ]]; then
-          if git diff --name-only "$LAST_COMMIT_STORED" "$CURRENT_COMMIT" | grep -vqE '(csproj|nuspec|AssemblyInfo.cs)'; then
+          if git diff --name-only "$LAST_COMMIT_STORED" "$CURRENT_COMMIT" | grep -vqE '(csproj|nuspec|AssemblyInfo.cs|\.github/)'; then
             echo "has_changes=true" >> "$GITHUB_ENV"
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
           else
@@ -61,6 +61,7 @@ jobs:
   tag-latest:
     needs: check-for-changes
     runs-on: ubuntu-latest
+    if: needs.check-for-changes.outputs.has_changes == 'true'
     outputs:
       tag_name: ${{ steps.tag_latest.outputs.tag_name }}
     steps:
