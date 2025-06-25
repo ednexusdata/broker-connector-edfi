@@ -20,7 +20,7 @@
     <RestoreAdditionalProjectSources>
       https://nuget.pkg.github.com/ednexusdata/index.json
     </RestoreAdditionalProjectSources>
-    <Version>0.0.9</Version>
+    <Version>0.0.10</Version>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 </Project>
