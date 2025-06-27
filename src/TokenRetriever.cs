@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using System.Runtime.Serialization;
 using System.Security.Authentication;
-using EdFi.OdsApi.Sdk.Client;
-using Config = EdFi.OdsApi.Sdk.Client.Configuration;
+using EdFi.OdsApi.Sdk.v71.Client;
+using Config = EdFi.OdsApi.Sdk.v71.Client.Configuration;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi;
 

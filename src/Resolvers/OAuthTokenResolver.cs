@@ -1,6 +1,6 @@
 using EdNexusData.Broker.Common.Configuration;
 using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Configuration;
-using EdFiOdsSdk = EdFi.OdsApi.Sdk.Client;
+using EdFiOdsSdk = EdFi.OdsApi.Sdk.v71.Client;
 
 namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
 

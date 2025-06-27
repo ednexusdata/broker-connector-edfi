@@ -33,7 +33,7 @@ public class StudentLookupService : IStudentLookupService
                     LastName = edfiResult.LastSurname,
                     StudentId = edfiResult.StudentUniqueId,
                     Gender = edfiResult.BirthSexDescriptor,
-                    BirthDate = DateOnly.FromDateTime(edfiResult.BirthDate),
+                    BirthDate = edfiResult.BirthDate, // DateOnly.FromDateTime()
                     Additional = new Dictionary<string, object> {
                         [typeof(Student).FullName!] = edfiResult
                     }
