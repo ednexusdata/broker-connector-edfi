@@ -1,8 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);NU1603</NoWarn>
+  </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EdFi.Suite3.OdsApi.Sdk.71" Version="1.*" />
-    <PackageReference Include="EdNexusData.Broker.Common" Version="0.1.*" />
+    <PackageReference Include="EdNexusData.Broker.Common" Version="0.1.*">
+        <Private>false</Private>
+        <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="EdNexusData.EdFi.OdsApi.Sdk" Version="1.*" />
     <PackageReference Include="Newtonsoft.Json" Version="13.*" />
   </ItemGroup>
 
@@ -14,6 +20,7 @@
     <RestoreAdditionalProjectSources>
       https://nuget.pkg.github.com/ednexusdata/index.json
     </RestoreAdditionalProjectSources>
-    <Version>0.0.8</Version>
+    <Version>0.0.11</Version>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 </Project>
