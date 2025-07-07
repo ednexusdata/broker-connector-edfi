@@ -1,23 +1,39 @@
-// using System.ComponentModel;
-// using EdFi.OdsApi.Sdk.Models.All;
-// using EdNexusData.Broker.Connector.Attributes;
-// using EdNexusData.Broker.Connector.EdFiAlliance.EdFi.Jobs;
-// using EdNexusData.Broker.Connector.PayloadContentTypes;
-// using EdNexusData.Broker.Core;
+using EdNexusData.Broker.Common.PayloadContents;
 
-// namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
-// [Job(typeof(StudentProgramEvaluationsJob))]
-// [DisplayName("Student Program Evaluations")]
-// public class StudentProgramEvaluationsPayloadContent : PayloadContentType
-// {
-//     public override PayloadContentSchema Schema => new PayloadContentSchema()
-//     {
-//         Owner = "EdFi",
-//         Schema = "EdFi.Resources.StudentProgramEvaluations",
-//         ObjectType = typeof(StudentProgramEvaluationsPayloadContent).FullName!,
-//         ContentObjectType = typeof(EdFiStudentProgramEvaluation).FullName!,
-//         SchemaVersion = "5.0.0"
-//     };
+public class StudentProgramEvaluations71PayloadContent : DataPayloadContent
+{
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.StudentProgramEvaluations",
+        ObjectType = typeof(StudentProgramEvaluations71PayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiOdsSdk.v71.Models.All.EdFiStudentProgramEvaluation).FullName!,
+        SchemaVersion = EdFiOdsSdk.Constants.EDFI_ODSAPI_V71
+    };
+}
 
-// }
+public class StudentProgramEvaluations72PayloadContent : DataPayloadContent
+{
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.StudentProgramEvaluations",
+        ObjectType = typeof(StudentProgramEvaluations72PayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiOdsSdk.v72.Models.All.EdFiStudentProgramEvaluation).FullName!,
+        SchemaVersion = EdFiOdsSdk.Constants.EDFI_ODSAPI_V72
+    };
+}
+
+public class StudentProgramEvaluations73PayloadContent : DataPayloadContent
+{
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.StudentProgramEvaluations",
+        ObjectType = typeof(StudentProgramEvaluations73PayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiOdsSdk.v73.Models.All.EdFiStudentProgramEvaluation).FullName!,
+        SchemaVersion = EdFiOdsSdk.Constants.EDFI_ODSAPI_V73
+    };
+}

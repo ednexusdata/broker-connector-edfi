@@ -1,36 +1,63 @@
-// using System.ComponentModel;
-// using System.Text.Json;
-// using EdFi.OdsApi.Sdk.Apis.All;
-// using Microsoft.Extensions.Logging;
-// using EdNexusData.Broker.Connector.PayloadContents;
-// using EdNexusData.Broker.Connector.PayloadContentTypes;
+using EdNexusData.Broker.Common.PayloadContents;
 
-// namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
+namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.PayloadContents;
 
-// [DisplayName("Student")]
-// public class StudentResourcePayloadContent : DataContentType
-// {
-//     public override string Schema => "EdFi";
-//     public override string SchemaVersion => "3";
-//     public override string ContentType => "text/json";
-//     public override string Content { 
-//         get {
-//             return JsonSerializer.Serialize(JsonContent);
-//         }
-//     }
-//     public string BasePath {get;set;}
-//     public string StudentUniqueId {get;set;}
-//     // public async Task<StudentResourcePayloadContent> ExecuteAsync()
-//     // {
-//     //     var api = new StudentsApi(BasePath);
-//     //     var response = await api.GetStudentsWithHttpInfoAsync(studentUniqueId: StudentUniqueId);
-//     //     var httpReponseCode = response.StatusCode;
-//     //     var students = response.Data;
+public class StudentResourceV54PayloadContent : DataPayloadContent
+{
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.StudentResource",
+        ObjectType = typeof(StudentResourceV54PayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiOdsSdk.v54.Models.All.EdFiStudent).FullName!,
+        SchemaVersion = EdFiOdsSdk.Constants.EDFI_ODSAPI_V54
+    };
+}
 
-//     //     var dataContent = new StudentResourcePayloadContent()
-//     //     {
-//     //         Content = JsonSerializer.Serialize(students)
-//     //     };
-//     //     return dataContent;
-//     // }
-// }
+public class StudentResourceV62PayloadContent : DataPayloadContent
+{
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.StudentResource",
+        ObjectType = typeof(StudentResourceV62PayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiOdsSdk.v62.Models.All.EdFiStudent).FullName!,
+        SchemaVersion = EdFiOdsSdk.Constants.EDFI_ODSAPI_V62
+    };
+}
+
+public class StudentResourceV71PayloadContent : DataPayloadContent
+{
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.StudentResource",
+        ObjectType = typeof(StudentResourceV71PayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiOdsSdk.v71.Models.All.EdFiStudent).FullName!,
+        SchemaVersion = EdFiOdsSdk.Constants.EDFI_ODSAPI_V71
+    };
+}
+
+public class StudentResourceV72PayloadContent : DataPayloadContent
+{
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.StudentResource",
+        ObjectType = typeof(StudentResourceV72PayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiOdsSdk.v72.Models.All.EdFiStudent).FullName!,
+        SchemaVersion = EdFiOdsSdk.Constants.EDFI_ODSAPI_V72
+    };
+}
+
+public class StudentResourceV73PayloadContent : DataPayloadContent
+{
+    public override PayloadContentSchema Schema => new PayloadContentSchema()
+    {
+        Owner = "EdFi",
+        Schema = "EdFi.Resources.StudentResource",
+        ObjectType = typeof(StudentResourceV73PayloadContent).FullName!,
+        ContentObjectType = typeof(EdFiOdsSdk.v73.Models.All.EdFiStudent).FullName!,
+        SchemaVersion = EdFiOdsSdk.Constants.EDFI_ODSAPI_V73
+    };
+}
