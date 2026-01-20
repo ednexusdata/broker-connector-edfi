@@ -64,7 +64,7 @@ jobs:
           release_name="EdNexusData.Broker.Connector.EdFiAlliance.EdFi-$tag-${{ matrix.target }}"
 
           # Build everything
-          dotnet publish /home/runner/work/broker-connector-edfi/broker-connector-edfi/src/EdNexusData.Broker.Connector.EdFiAlliance.EdFi.csproj --framework net8.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name"
+          dotnet publish /home/runner/work/broker-connector-edfi/broker-connector-edfi/src/EdNexusData.Broker.Connector.EdFiAlliance.EdFi.csproj --framework net10.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name"
 
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
