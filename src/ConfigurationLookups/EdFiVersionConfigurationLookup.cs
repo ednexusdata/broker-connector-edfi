@@ -1,3 +1,4 @@
+using EdNexusData.Broker.Common.Jobs;
 using EdNexusData.Broker.Common.Mappings;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using EdFiOdsApi = EdFi.OdsApi.Sdk;
@@ -6,7 +7,7 @@ namespace EdNexusData.Broker.Connector.EdFiAlliance.EdFi.ConfigurationLookups;
 
 public class EdFiVersionConfigurationLookup : IMappingLookup
 {
-    public Task<List<SelectListItem>> SelectListAsync()
+    public Task<List<SelectListItem>> SelectListAsync(IJobStatusService? jobStatusService)
     {
         return Task.Run(() => {
             var selectList = new List<SelectListItem>();
