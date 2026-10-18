@@ -55,7 +55,7 @@ public class StudentHealthsV72Job
         var api = new EdFiOdsSdk.v72.Apis.All.StudentHealthsApi(config);
         var response = await api.GetStudentHealthsWithHttpInfoAsync(studentUniqueId: studentUniqueId);
 
-        var dataContent = new StudentProgramAssociationsV72PayloadContent()
+        var dataContent = new StudentHealthsV72PayloadContent()
         {
             Content = response.Data
         };
@@ -88,7 +88,7 @@ public class StudentHealthsV73Job
         var api = new EdFiOdsSdk.v73.Apis.All.StudentHealthsApi(config);
         var response = await api.GetStudentHealthsWithHttpInfoAsync(studentUniqueId: studentUniqueId);
 
-        var dataContent = new StudentProgramAssociationsV73PayloadContent()
+        var dataContent = new StudentHealthsV73PayloadContent()
         {
             Content = response.Data
         };
